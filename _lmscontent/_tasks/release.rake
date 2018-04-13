@@ -1,7 +1,7 @@
 require 'rugged'
 require 'pathname'
 
-def build
+def build(target)
   # Walk repo to find commits
   @config['repos'].each do |key,hash|
     git_dir = "./repos/#{key}"
