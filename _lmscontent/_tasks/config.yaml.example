@@ -8,6 +8,8 @@ credentials:
       token: '678910116789101167891011'
     staging:
       token: '121314151617181920'
+    sandbox:
+      token: '123456789012345678'
 # This is used to download the full (non-shallow) copy of the repo
 # the branch key here is depricated as we match the sha of the shallow repo.
 repos:
