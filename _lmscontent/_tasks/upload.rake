@@ -12,12 +12,16 @@ namespace :upload do
   # Connect to the learndot api
   def connect(target)
     # https://github.com/puppetlabs/learndot_api/blob/e1df5b0e1c64b09e7e48c504e98e2f3645f2eaf9/lib/learndot.rb#L22
-    staging = target == 'production'  ? false : true
+    envs = ['production', 'staging', 'sandbox']
+    unless envs.include?(target)
+      puts "#{target} is not a valid environment"
+      return
+    end
 
     # Configure the token for the target
     ENV['LEARNDOT_TOKEN'] = @config['credentials']['learndot'][target]['token']
 
-    @lms = @lms || Learndot.new(true, staging).learning_component
+    @lms = @lms || Learndot.new(true, target).learning_component
   end
 
 	# Show learning components 
